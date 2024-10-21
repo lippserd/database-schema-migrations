@@ -1,0 +1,15 @@
+CREATE TABLE schema_history (
+  id SERIAL PRIMARY KEY,
+  version SMALLINT NOT NULL,
+  timestamp BIGINT NOT NULL DEFAULT EXTRACT(EPOCH FROM NOW()) * 1000
+);
+
+CREATE TABLE schema_routine (
+  id SERIAL PRIMARY KEY,
+  routine VARCHAR(64),
+  version SMALLINT NOT NULL,
+  timestamp BIGINT NOT NULL DEFAULT EXTRACT(EPOCH FROM NOW()) * 1000
+);
+
+INSERT INTO schema_history (version)
+  VALUES (0);
